@@ -1,22 +1,18 @@
 @import '~antd/dist/antd.css';
 
-/* style={{ "textAlign": "center", "background": "#123456", "padding": "35px" */
-
 .VideoFrame {
-width: 100%;
-background: #999999;
+width: 100vw;
+background: lightgray;
 color: black;
 height: 85vh;
-postion: relative;
+align-items: center;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
 }
 
-.App {
-  text-align: center;
-}
+
 
 .VideoDetail {
   display: flex;
@@ -24,10 +20,11 @@ h1 {
 }
 
 .SearchBar {
+  align-content: center;
   text-align: center;
   background: black;
   padding: 35px;
-  width: 400px;
+  width: 100vw;
 }
 
 .SearchButton {
@@ -36,38 +33,4 @@ h1 {
 
 .Icon {
   size: large;
-}
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import { Icon } from "antd";
 
 class VideoDetail extends Component {
-    state = {
+  constructor(props) {
+    super(props);
+    this.state = {
         video: null
     };
+  }
+
 
     componentDidUpdate(prevProps) {
         if( this.props.video && ( prevProps.video !== this.props.video)  ) {
@@ -18,7 +22,7 @@ class VideoDetail extends Component {
         if( !video ) {
             return (
                 <div className="VideoFrame">
-                <h1><Icon type={"youtube"}/></h1>
+                    <h1><Icon type={"youtube"}/></h1>
                 </div>
             )
         }
