@@ -3,6 +3,8 @@ import './App.css';
 import SearchBar from './components/SearchBar';
 import VideoDetail from './components/VideoDetail';
 import YTSearch from 'youtube-api-search';
+import AudioAnalyzer from './components/AudioAnalyzer'
+
 import {Icon} from 'antd';
 
 const key = process.env.REACT_APP_YOUTUBE_API_KEY
@@ -13,9 +15,33 @@ class App extends Component {
       this.state = {
         videos: [],
         search: true,
-        selectedVideo: {}
+        selectedVideo: {},
+        audio: null
       };
+      this.toggleMicrophone = this.toggleMicrophone.bind(this);
 }
+
+async getMicrophone() {
+  const audio = await navigator.mediaDevices.getUserMedia({
+    audio: true,
+    video: false
+  });
+  this.setState({ audio });
+}
+
+stopMicrophone() {
+  this.state.audio.getTracks().forEach(track => track.stop());
+  this.setState({audio: null});
+}
+
+toggleMicrophone() {
+  if (this.state.audio) {
+    this.stopMicrophone();
+  } else {
+    this.getMicrophone();
+  }
+}
+
 
   videoSearch(term) {
       if( this.state.search ) {
@@ -34,14 +60,13 @@ class App extends Component {
        }
 }
 
-
 handleChange = (value) => {
   setTimeout( () => {
     if( value === ''){
       this.setState({ videos: [], selectedVideo: {} });
       return;
     }
-    if( this.state.search ) {
+    if( this.state.search && value.length > 5) {
       this.videoSearch( value );
     }
     setTimeout( () => {
@@ -67,6 +92,14 @@ render() {
       </div>
       <div className="VideoDetail">
         <VideoDetail video={ this.state.selectedVideo }/>
+      </div>
+      <div className="App">
+          <div className="controls">
+            <button onClick={this.toggleMicrophone}>
+              {this.state.audio ? 'Stop microphone' : 'Get microphone input'}
+            </button>
+          </div>
+          {this.state.audio ? <AudioAnalyzer audio={this.state.audio} /> : ''}
       </div>
     </div>
   )
