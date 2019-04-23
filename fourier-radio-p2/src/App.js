@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
-import YTSearch from 'youtube-api-search';
 import SearchBar from './components/SearchBar';
 import VideoDetail from './components/VideoDetail';
+import YTSearch from 'youtube-api-search';
 import {Icon} from 'antd';
 
 const key = process.env.REACT_APP_YOUTUBE_API_KEY
-console.log('key', key)
 
 class App extends Component {
   constructor(props) {
@@ -18,10 +17,11 @@ class App extends Component {
       };
 }
 
-  videoSearch(query) {
+  videoSearch(term) {
       if( this.state.search ) {
-           YTSearch({ key: key, query }, (data) => {
+           YTSearch({ key: key, term }, (data) => {
                try {
+                   console.log(data);
                    this.setState({ videos: data, selectedVideo: data[0] });
                    console.log( this.state.videos );
                } catch( err ){
@@ -34,10 +34,11 @@ class App extends Component {
        }
 }
 
+
 handleChange = (value) => {
   setTimeout( () => {
     if( value === ''){
-      this.setState({ videos: [], selectedVideo: null });
+      this.setState({ videos: [], selectedVideo: {} });
       return;
     }
     if( this.state.search ) {
@@ -45,8 +46,8 @@ handleChange = (value) => {
     }
     setTimeout( () => {
       this.setState({ search: true });
-    }, 5000);
-  }, 2000);
+    }, 3000);
+  }, 1500);
 };
 
 render() {

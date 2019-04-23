@@ -5,7 +5,7 @@ class VideoDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        video: null
+        video: null,
     };
   }
 
@@ -29,6 +29,7 @@ class VideoDetail extends Component {
 
         const videoId = video.id.videoId;
         const url = `https://www.youtube.com/embed/${ videoId }`;
+
 
         return (
             <div>
