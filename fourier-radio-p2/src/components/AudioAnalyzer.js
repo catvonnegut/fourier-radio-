@@ -8,6 +8,8 @@ class AudioAnalyzer extends Component {
       this.tick = this.tick.bind(this);
   }
 
+
+
 componentDidMount() {
   this.audioContext = new (window.AudioContext ||
   window.webkitAudioContext)();

@@ -52,8 +52,8 @@ toggleMicrophone() {
                    console.log( this.state.videos );
                } catch( err ){
                    alert('error')({
-                       message: "Daily Limit Exceeded",
-                       description: "Youtube data API daily limit have exceeded. Quota will be recharged at 1:30pm IST. Wait till then.",
+                       message: "Exceeded Daily Limit",
+                       description: "Exceeded YouTube Unit Daily Limit",
                    })
                }
            });
@@ -89,17 +89,17 @@ render() {
                  })}
                }
           />
+          <div className="Audio">
+              <div className="controls">
+                <button onClick={this.toggleMicrophone}>
+                  {this.state.audio ? 'Stop Visualizer' : 'Initiate Visualizer'}
+                </button>
+              </div>
+              {this.state.audio ? <AudioAnalyzer audio={this.state.audio} /> : ''}
+          </div>
       </div>
       <div className="VideoDetail">
         <VideoDetail video={ this.state.selectedVideo }/>
-      </div>
-      <div className="App">
-          <div className="controls">
-            <button onClick={this.toggleMicrophone}>
-              {this.state.audio ? 'Stop microphone' : 'Get microphone input'}
-            </button>
-          </div>
-          {this.state.audio ? <AudioAnalyzer audio={this.state.audio} /> : ''}
       </div>
     </div>
   )
