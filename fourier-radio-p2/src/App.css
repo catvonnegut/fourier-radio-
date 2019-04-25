@@ -1,5 +1,6 @@
 @import '~antd/dist/antd.css';
 
+
 .VideoFrame {
 width: 100vw;
 background: lightgray;
@@ -14,13 +15,17 @@ display: flex;
 flex-direction: column;
 }
 
-.controls {
+.Controls {
 display: flex;
 justify-content: center;
+color: black;
 }
 
-h1, h2 {
+h1, h2, body {
+  padding-top: 10px;
   text-align: center;
+  background-color: black;
+  color: lightgray;
 }
 
 
@@ -35,12 +40,4 @@ h1, h2 {
   background: black;
   padding: 35px;
   width: 100vw;
-}
-
-.SearchButton {
-  margin-left: 5px;
-}
-
-.Icon {
-  size: large;
 }

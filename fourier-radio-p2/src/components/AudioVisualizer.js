@@ -9,24 +9,25 @@ class AudioVisualizer extends Component {
   draw() {
   const {audioData} = this.props;
   const canvas = this.canvas.current;
-  const height = canvas.height;
-  const width = canvas.width;
+  const w = canvas.width;
+  const h = canvas.height;
   const context = canvas.getContext('2d');
   let x = 0;
-  const sliceWidth = (width * 1.0) /audioData.length;
+  const sliceWidth = (w * 1) /audioData.length;
 
-  context.lineWidth = 2;
-  context.strokeStyle = '#000000';
-  context.clearRect(0,0,width, height);
+  context.lineWidth = 3;
+  context.strokeStyle = '#000563';
+  context.clearRect(0,0,w, h);
+  context.arc(100, 75, 50, 0, 2 * Math.PI);
 
   context.beginPath();
-  context.moveTo(0, height / 2);
+  context.moveTo(0, h / 2);
 
   for (const item of audioData) {
-    const y = (item / 255.0) * height;
+    const y = (item / 255.0) * h;
     context.lineTo(x,y);
     x += sliceWidth;
-    context.lineTo(x, height / 2);
+    context.lineTo(x, h / 2);
     context.stroke();
   }
 

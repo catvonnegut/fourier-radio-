@@ -90,7 +90,7 @@ render() {
                }
           />
           <div className="Audio">
-              <div className="controls">
+              <div className="Controls">
                 <button onClick={this.toggleMicrophone}>
                   {this.state.audio ? 'Stop Visualizer' : 'Initiate Visualizer'}
                 </button>
